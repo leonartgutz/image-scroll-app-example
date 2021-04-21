@@ -39,5 +39,6 @@ module.exports = {
         multiline: true, minProperties: 3,
       },
     }],
+    'max-len': 'off',
   },
 };
