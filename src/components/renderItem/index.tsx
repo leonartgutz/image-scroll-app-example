@@ -1,16 +1,17 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { ImgBody } from './styles';
+import { ImgBody, ImgText } from './styles';
 
 interface ItemProps {
   item: {
+    id: any,
     title: string,
     url: string
   }
 }
 
-const Item = ({ url, title }: any) => (
+const Item = ({ id, url, title }: any) => (
   <ImgBody
+    key={id}
     imageStyle={{
       borderRadius: 7,
     }}
@@ -18,12 +19,12 @@ const Item = ({ url, title }: any) => (
       uri: url,
     }}
   >
-    <Text>{title}</Text>
+    <ImgText>{title}</ImgText>
   </ImgBody>
 );
 
 const RenderItem: React.FC<ItemProps> = ({ item }) => (
-  <Item url={item.url} title={item.title} />
+  <Item url={item.url} title={item.title} id={item.id} />
 );
 
 export default RenderItem;
