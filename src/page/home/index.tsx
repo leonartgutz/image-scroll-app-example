@@ -14,6 +14,7 @@ const Home: React.FC = () => {
     async function getImages() {
       const result: any = await api.get('/albums/1/photos');
       const { data } = result;
+      setPhotos([]);
 
       Promise.all(data.map(async (image: any) => {
         const hash = shorthash.unique(image.url);
@@ -37,10 +38,26 @@ const Home: React.FC = () => {
     getImages();
   }, []);
 
+  const randomize = (array: any, newArr: any = []): any => {
+    const newPhotoArray = newArr;
+    if (array.length === 0) {
+      return true;
+    }
+
+    const i = Math.floor(Math.random() * array.length);
+    newPhotoArray.push(array[i]);
+    array.splice(i, 1);
+    const oldArray = array;
+
+    setPhotos(newPhotoArray);
+
+    return randomize(oldArray, newPhotoArray);
+  };
+
   return (
     <HomeBody>
       <Scroll data={photos} renderItem={(RenderItem) as any} keyExtractor={(item: any) => item.id} horizontal />
-      <MyButton onPress={() => {}} isDisabled={false} size="big" type="primary" text="Click me" isRound />
+      <MyButton onPress={() => { randomize(photos); }} isDisabled={false} size="big" type="primary" text="Click me" isRound />
     </HomeBody>
   );
 };
