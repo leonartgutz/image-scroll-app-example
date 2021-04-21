@@ -1,5 +1,5 @@
 import remCalc from '../../utils/remCalc';
-import { primary, secondary, accent, whiteBg, darkBg } from '../../styles/colors';
+import { primary, secondary, accent, whiteBg } from '../../styles/colors';
 
 export const BtnBodySize = (size: string): string => {
   switch (size) {
