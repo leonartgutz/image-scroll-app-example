@@ -1,47 +1,31 @@
-import React, { useState } from 'react';
-import { Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import MyButton from '../../components/button';
-import { HomeBody, ImgBody, Scroll } from './styles';
-
-const DATA = [
-  {
-    id: 1,
-    uri: 'https://via.placeholder.com/600/771796',
-  },
-  {
-    id: 2,
-    uri: 'https://via.placeholder.com/600/92c952',
-  },
-  {
-    id: 3,
-    uri: 'https://via.placeholder.com/600/92c952',
-  },
-  {
-    id: 4,
-    uri: 'https://via.placeholder.com/600/92c952',
-  },
-];
-
-const Item = ({ uri }: any) => (
-  <ImgBody source={{
-    uri,
-  }}
-  >
-    <Text>{uri}</Text>
-  </ImgBody>
-);
-
-const renderItem = ({ item }: any) => (
-  <Item uri={item.uri} />
-);
+import { HomeBody, Scroll } from './styles';
+import api from '../../services/api';
+import RenderItem from '../../components/renderItem';
 
 const Home: React.FC = () => {
   const [isDisabled, setIsDisable] = useState(false);
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    async function getImages() {
+      const result: any = await api.get('/photos');
+      setPhotos(result.data);
+      console.log(photos);
+    }
+
+    getImages();
+  }, []);
+
+  function handlePress(value: string): void {
+    console.log(value);
+  }
 
   return (
     <HomeBody>
-      <Scroll data={DATA} renderItem={renderItem} horizontal />
-      <MyButton isDisabled={isDisabled} size="big" type="secondary" text="Click me" isRound />
+      <Scroll data={photos} renderItem={RenderItem} horizontal />
+      <MyButton onPress={() => handlePress('hey')} isDisabled={isDisabled} size="big" type="primary" text="Click me" isRound />
     </HomeBody>
   );
 };
