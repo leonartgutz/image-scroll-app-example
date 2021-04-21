@@ -9,15 +9,17 @@ interface Props {
   isDisabled: boolean,
   text: string,
   onPress(): any,
+  onLongPress(): any
 }
 
-const MyButton: React.FC<Props> = ({ text, isDisabled, size, isRound, type, onPress }) => (
+const MyButton: React.FC<Props> = ({ text, isDisabled, size, isRound, type, onPress, onLongPress }) => (
   <BtnBody
     isDisabled={isDisabled}
     size={size}
     isRound={isRound}
     type={type}
     onPress={onPress}
+    onLongPress={onLongPress}
   >
     <BtnText isDisabled={isDisabled} size={size} type={type}>
       {text}

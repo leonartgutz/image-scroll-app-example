@@ -9,3 +9,7 @@ export const HomeBody = styled.View`
 export const Scroll = styled.FlatList`
   margin-bottom: ${remCalc(1)}
 `;
+
+export const SupriseText = styled.Text`
+  margin-top: ${remCalc(1)}
+`;
