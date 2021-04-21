@@ -22,4 +22,4 @@ $ yarn ios
 
 ## Build Link
 
-[https://expo.io/accounts/leonartgutz/builds/984199f1-c69d-41cc-a293-d4b554276b26](https://expo.io/accounts/leonartgutz/builds/984199f1-c69d-41cc-a293-d4b554276b26)
+[https://expo.io/@leonartgutz/pic-lib ](https://expo.io/@leonartgutz/pic-lib)
